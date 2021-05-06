@@ -1,0 +1,34 @@
+TITLE:  Simulation procedure used to generate datasets;
+MONTECARLO:
+names are y1-y10;
+generate = y1-y10 (1);
+categorical = y1-y10;
+nobs = 10000;
+ncsizes = 1;
+csizes = 200(50);
+seed = 58469;
+nreps = 1;
+repsave=all;
+save = 200_50rep*.dat;
+ANALYSIS:
+TYPE IS TWOLEVEL;
+ESTIMATOR=WLSMV;
+processors = 12; 
+MODEL POPULATION:
+%Within%
+fw1 BY y1-y5 * 0.7;
+fw2 BY y6-y10 * 0.7;
+fw1 * 1;
+fw2 * 1;
+fw1 * 1;
+fw2 * 1;
+fw1 with fw2 * 0.3;
+%Between%
+fb1 BY y1-y5 * 0.7;
+fb2 BY y6-y10 * 0.7;
+fb1 * 0.5;
+fb2 * 0.5;
+y1-y10 * 0.51;
+fb1 with fb2 * 0.15;
+MODEL:
+OUTPUT: tech9;
