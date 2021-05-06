@@ -5,7 +5,8 @@ This repository includes:
 
 1. Mplus syntax for generating dataset with number of groups = 200, group size = 50, and intra class correlation = 0.5. 
 
-2. Mplus syntax for following models. 
+2. Mplus syntax for following models.
+ 
 2.1 M_C: Correctly specified model (i.e., the hypothesized model was equal to the population model).
  
 2.2 M_B: Misspecification in between-level model.
