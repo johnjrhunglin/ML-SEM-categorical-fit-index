@@ -1,0 +1,20 @@
+DATA: FILE IS c:\cfiall500\200_50_rep500_0.5\200_50rep1.dat;
+VARIABLE:    NAMES ARE y1-y10 clus; 
+categorical = y1-y10; 
+CLUSTER = clus; 
+ANALYSIS:
+processors = 12 ;
+TYPE IS TWOLEVEL;
+ESTIMATOR = WLSMV;
+starts = 10 ;
+MODEL:
+%Within%
+fw1 BY y1@1 y2-y5*0.7;
+fw2 BY y6@1 y7-y10*0.7;
+fw1*1;
+fw2*1;
+fw1 with fw2 * 0.3 ;
+%Between%
+fb1 BY y1@1 y2-y10*1;
+fb1*1;
+OUTPUT: standardized tech1;
